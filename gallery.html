@@ -3,14 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اختبار الصور</title>
+    <title>معرض الأعمال | دهب للتكييف</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+        body { font-family: 'Cairo', sans-serif; }
+        .ice-bg { background: linear-gradient(135deg, #00C6FF 0%, #0072FF 100%); }
+        
+        @keyframes snowfall {
+            0% { transform: translateY(-10vh) translateX(-10px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(100vh) translateX(10px); opacity: 0; }
+        }
+        .snowflake { position: absolute; color: white; opacity: 0.3; animation: snowfall 10s linear infinite; pointer-events: none; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
 </head>
-<body style="background-color: #333; color: white; text-align: center; padding: 50px;">
+<body class="ice-bg text-white min-h-screen relative">
 
-    <h1>اختبار ظهور الصورة</h1>
-    <p>لو الصورة ظهرت تحت، يبقى المشكلة كانت في الكود. لو مظهرتش يبقى المشكلة في الصورة نفسها.</p>
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <i class="fas fa-snowflake snowflake text-2xl" style="left: 10%; animation-duration: 8s;"></i>
+        <i class="fas fa-snowflake snowflake text-3xl" style="left: 50%; animation-duration: 11s;"></i>
+        <i class="fas fa-snowflake snowflake text-xl" style="left: 80%; animation-duration: 15s;"></i>
+    </div>
 
-    <img src="images/1.jpeg" alt="صورة الاختبار" style="width: 300px; border: 5px solid yellow;">
+    <nav class="p-6 relative z-20">
+        <a href="index.html" class="inline-flex items-center gap-3 glass-card px-6 py-3 rounded-full hover:bg-white/20 transition text-lg font-bold shadow-lg group">
+            <i class="fas fa-arrow-right group-hover:-translate-x-1 transition"></i>
+            رجوع للرئيسية
+        </a>
+    </nav>
+
+    <header class="text-center py-8 px-4 relative z-10">
+        <h1 class="text-4xl md:text-5xl font-black mb-4 drop-shadow-md">سابقة أعمالنا</h1>
+        <div class="h-1 w-24 bg-yellow-400 mx-auto rounded-full mb-4"></div>
+        <p class="text-blue-100 text-xl">صور حقيقية من مواقع العمل 📸</p>
+    </header>
+
+    <section class="pb-20 px-4 max-w-7xl mx-auto relative z-10">
+        <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+    </section>
+
+    <footer class="glass-card mt-auto py-8 text-center relative z-10 border-t border-white/20">
+        <p class="text-blue-200">© 2024 شركة دهب - انتعاش القطب الشمالي ❄️</p>
+    </footer>
+
+    <script>
+        const galleryGrid = document.getElementById('gallery-grid');
+        const numberOfImages = 15; 
+
+        for (let i = 1; i <= numberOfImages; i++) {
+            const cardHTML = `
+                <div class="group relative h-80 rounded-3xl overflow-hidden glass-card shadow-xl cursor-pointer hover:shadow-cyan-500/20 transition-all duration-300 transform hover:-translate-y-2">
+                    
+                    <img src="images/jpg.${i}.jpeg" 
+                         alt="صورة رقم ${i}"
+                         loading="lazy"
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold text-cyan-300 translate-y-4 group-hover:translate-y-0 transition duration-500">
+                            عملية تركيب #${i}
+                        </h3>
+                    </div>
+                </div>
+            `;
+            galleryGrid.innerHTML += cardHTML;
+        }
+    </script>
 
 </body>
 </html>
