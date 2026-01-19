@@ -65,24 +65,20 @@
             const cardHTML = `
                 <div class="group relative h-80 rounded-3xl overflow-hidden glass-card shadow-xl cursor-pointer hover:shadow-cyan-500/20 transition-all duration-300 transform hover:-translate-y-2">
                     
-                    <img src="images/${i}.jpeg" 
-                         alt="صورة من أعمالنا رقم ${i}"
-                         loading="lazy"
-                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <img src="images/${i}.jpg" 
+                         alt="صورة رقم ${i}"
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                         onerror="this.src='https://via.placeholder.com/300?text=Image+Error';"> 
                     
                     <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
                         <h3 class="text-xl font-bold text-cyan-300 translate-y-4 group-hover:translate-y-0 transition duration-500">
-                            تنفيذ عملية رقم #${i}
+                            عملية رقم #${i}
                         </h3>
-                        <p class="text-gray-300 text-sm translate-y-4 group-hover:translate-y-0 transition duration-500 delay-75">
-                            دهب للتكييف - جودة وضمان
-                        </p>
                     </div>
                 </div>
             `;
             galleryGrid.innerHTML += cardHTML;
         }
     </script>
-
 </body>
 </html>
