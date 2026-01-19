@@ -3,63 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دهب للتكييف</title>
+    <title>دهب للتكييف | انتعاش القطب الشمالي</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
         body { font-family: 'Cairo', sans-serif; }
+        
+        /* حركة التلج والهواء */
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); opacity: 0.6; }
+            50% { transform: translateY(-20px) translateX(10px); opacity: 1; }
+            100% { transform: translateY(0px) translateX(0px); opacity: 0.6; }
+        }
+        @keyframes snowfall {
+            0% { transform: translateY(-10vh) translateX(-10px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(100vh) translateX(10px); opacity: 0; }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .snowflake { position: absolute; color: white; opacity: 0.3; animation: snowfall 10s linear infinite; pointer-events: none; }
+        
+        /* خلفية مثلجة */
+        .ice-bg {
+            background: linear-gradient(135deg, #00C6FF 0%, #0072FF 100%);
+        }
+        
+        /* كروت زجاجية (تأثير التلج) */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="ice-bg text-white min-h-screen relative overflow-x-hidden">
 
-    <nav class="bg-white shadow-md fixed w-full z-50">
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <i class="fas fa-snowflake snowflake text-2xl" style="left: 10%; animation-duration: 8s; animation-delay: 0s;"></i>
+        <i class="fas fa-snowflake snowflake text-xl" style="left: 30%; animation-duration: 12s; animation-delay: 2s;"></i>
+        <i class="fas fa-snowflake snowflake text-3xl" style="left: 70%; animation-duration: 10s; animation-delay: 1s;"></i>
+        <i class="fas fa-snowflake snowflake text-lg" style="left: 90%; animation-duration: 15s; animation-delay: 4s;"></i>
+        <i class="fas fa-wind absolute text-white/10 text-9xl top-20 right-0 animate-pulse"></i>
+    </div>
+
+    <nav class="fixed w-full z-50 glass-card shadow-lg border-b-0">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center py-4">
-                <div class="text-2xl font-black text-blue-600">دهب <span class="text-yellow-500">للتكييف</span></div>
-                <a href="tel:+201000000000" class="bg-blue-600 text-white px-4 py-2 rounded-full font-bold hover:bg-blue-700">
+                <div class="text-2xl font-black flex items-center gap-2">
+                    <i class="fas fa-snowflake text-cyan-300 animate-spin-slow"></i>
+                    <span>دهب <span class="text-cyan-300">للتكييف</span></span>
+                </div>
+                <a href="tel:+201000000000" class="bg-white text-blue-600 px-5 py-2 rounded-full font-bold hover:bg-cyan-50 transition shadow-lg shadow-blue-900/50">
                     <i class="fas fa-phone-alt ml-2"></i> اتصل الآن
                 </a>
             </div>
         </div>
     </nav>
 
-    <header class="pt-32 pb-20 px-4 text-center bg-gradient-to-b from-blue-100 to-white">
-        <h1 class="text-5xl font-black text-gray-900 mb-6">خلي صيفك <span class="text-yellow-500">دهب</span></h1>
-        <p class="text-xl text-gray-600 mb-8">صيانة، بيع، وتركيب تكييفات بأعلى جودة في مصر.</p>
-        <div class="flex justify-center gap-4">
-            <a href="https://wa.me/201000000000" class="bg-green-500 text-white px-8 py-3 rounded-xl font-bold hover:bg-green-600 shadow-lg flex items-center">
-                <i class="fab fa-whatsapp ml-2"></i> واتساب
+    <header class="pt-40 pb-20 px-4 text-center relative z-10">
+        <div class="animate-float">
+            <h1 class="text-5xl md:text-7xl font-black mb-6 drop-shadow-lg">
+                وداعاً لحر <span class="text-yellow-400">الصيف</span>
+            </h1>
+            <h2 class="text-3xl md:text-5xl font-bold mb-8 text-cyan-100">
+                بيتك هيبقى <span class="text-white border-b-4 border-cyan-400 pb-2">قطب شمالي</span> ❄️
+            </h2>
+        </div>
+        <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+            أقوى صيانة وتبريد في مصر. بنحول بيتك لتلاجة بأحدث الأجهزة وأسرع خدمة.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="https://wa.me/201000000000" class="glass-card text-white px-8 py-4 rounded-2xl font-bold hover:bg-white/30 transition flex items-center justify-center gap-2 border-2 border-green-400/50">
+                <i class="fab fa-whatsapp text-green-400 text-2xl"></i> تواصل واتساب
             </a>
-            <a href="tel:+201000000000" class="bg-gray-800 text-white px-8 py-3 rounded-xl font-bold hover:bg-gray-900 shadow-lg flex items-center">
-                <i class="fas fa-phone ml-2"></i> اتصال
+            <a href="tel:+201000000000" class="bg-cyan-500 text-blue-900 px-8 py-4 rounded-2xl font-bold hover:bg-cyan-400 transition shadow-xl shadow-cyan-500/30 flex items-center justify-center gap-2">
+                <i class="fas fa-mobile-alt text-xl"></i> اتصل بالفني
             </a>
         </div>
     </header>
 
-    <section class="py-16 px-4 max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-12">خدماتنا</h2>
+    <section class="py-16 px-4 max-w-6xl mx-auto relative z-10">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-2">خدمات الانتعاش</h2>
+            <div class="h-1 w-20 bg-cyan-400 mx-auto rounded-full"></div>
+        </div>
+
         <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition text-center border-t-4 border-blue-500">
-                <div class="text-4xl text-blue-500 mb-4"><i class="fas fa-tools"></i></div>
-                <h3 class="text-xl font-bold mb-2">صيانة دورية</h3>
-                <p class="text-gray-600">تنظيف وصيانة شاملة لضمان كفاءة التبريد.</p>
+            <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition duration-300 text-center group">
+                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl text-cyan-300 group-hover:scale-110 transition">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">صيانة شاملة</h3>
+                <p class="text-blue-100 text-sm">بنغسل وننظف ونرجع التكييف جديد، انسى الصوت العالي والتنقيط.</p>
             </div>
-            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition text-center border-t-4 border-yellow-500">
-                <div class="text-4xl text-yellow-500 mb-4"><i class="fas fa-shopping-cart"></i></div>
-                <h3 class="text-xl font-bold mb-2">بيع وشراء</h3>
-                <p class="text-gray-600">أجهزة جديدة وكسر زيرو بأسعار مميزة.</p>
+
+            <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition duration-300 text-center group border-cyan-400/50">
+                <div class="w-16 h-16 bg-cyan-500 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl group-hover:scale-110 transition shadow-lg shadow-cyan-500/50">
+                    <i class="fas fa-snowflake"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">شحن فريون أصلي</h3>
+                <p class="text-blue-100 text-sm">شحن فريون أمريكي وهندي بضمان، عشان التبريد يوصل للعضم.</p>
             </div>
-            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition text-center border-t-4 border-red-500">
-                <div class="text-4xl text-red-500 mb-4"><i class="fas fa-snowflake"></i></div>
-                <h3 class="text-xl font-bold mb-2">شحن فريون</h3>
-                <p class="text-gray-600">شحن أصلي للتكييف عشان يرجع تلاجة.</p>
+
+            <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition duration-300 text-center group">
+                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl text-yellow-400 group-hover:scale-110 transition">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">بيع واستبدال</h3>
+                <p class="text-blue-100 text-sm">اشتري تكييف جديد أو كسر زيرو بأحسن سعر في السوق.</p>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-8 text-center mt-12">
-        <p>© 2024 شركة دهب للتكييف. جميع الحقوق محفوظة.</p>
+    <footer class="glass-card mt-12 py-8 text-center relative z-10 border-t border-white/20">
+        <p class="text-blue-200">© 2024 شركة دهب - صنعنا الشتاء في عز الصيف ❄️</p>
     </footer>
 
 </body>
