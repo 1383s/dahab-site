@@ -58,20 +58,14 @@
     </footer>
 
     <script>
-        // 1. بنمسك العنصر اللي هنحط فيه الصور
         const galleryGrid = document.getElementById('gallery-grid');
-        
-        // 2. حدد عدد الصور اللي عندك هنا (لو زودت صور غير الرقم ده بس)
         const numberOfImages = 15; 
 
-        // 3. بنعمل لوب (تكرار) عشان ينشئ الكروت
         for (let i = 1; i <= numberOfImages; i++) {
-            
-            // بنعمل كارت لكل صورة
-            // لاحظ: src="images/${i}.jpg" دي اللي بتنادي على 1.jpg و 2.jpg وهكذا
             const cardHTML = `
                 <div class="group relative h-80 rounded-3xl overflow-hidden glass-card shadow-xl cursor-pointer hover:shadow-cyan-500/20 transition-all duration-300 transform hover:-translate-y-2">
-                    <img src="images/${i}.jpg" 
+                    
+                    <img src="images/${i}.jpeg" 
                          alt="صورة من أعمالنا رقم ${i}"
                          loading="lazy"
                          class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
@@ -86,8 +80,6 @@
                     </div>
                 </div>
             `;
-            
-            // بنضيف الكارت جوه الصفحة
             galleryGrid.innerHTML += cardHTML;
         }
     </script>
